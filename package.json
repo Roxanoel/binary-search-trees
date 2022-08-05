@@ -1,0 +1,22 @@
+{
+  "name": "binary-search-trees",
+  "version": "1.0.0",
+  "description": "Exercices on binary search trees for The Odin Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roxanoel/binary-search-trees.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roxanoel/binary-search-trees/issues"
+  },
+  "homepage": "https://github.com/Roxanoel/binary-search-trees#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
