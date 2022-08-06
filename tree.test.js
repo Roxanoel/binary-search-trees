@@ -2,7 +2,7 @@ const Tree = require('./tree');
 
 let tree;
 beforeEach(() => {
-
+    tree = Tree();
 });
 
 describe('Building a tree', () => {
