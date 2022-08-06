@@ -14,6 +14,10 @@ describe('Building a tree', () => {
         expect(tree.prepareArray([1, 7, 4, 23, 8, 9, 4])).toStrictEqual([1, 4, 7, 8, 9, 23]);
     });
 
+    test('prepareArray removes tripled values from provided array', () => {
+        expect(tree.prepareArray([1, 7, 4, 4, 23, 8, 9, 4])).toStrictEqual([1, 4, 7, 8, 9, 23]);
+    });
+
     test('buildTree throws error if what is passed in is not an array', () => {
         expect(() => { tree.prepareArray(1)}).toThrow('Please pass in an array');
     });
