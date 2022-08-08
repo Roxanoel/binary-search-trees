@@ -114,8 +114,25 @@ function Tree(array) {
         return results;
     }   
 
-    function postorder() {
+    function postorder(root) {
+        const results = [];
+        if (root === null) return null;
 
+        // Initialize a stack
+        const stack = [root];
+
+        while (stack.length > 0) {
+            // Handle top element of the stack
+            const current = stack.pop();
+            // Add left child to stack
+            if (current.left) stack.push(current.left);
+            // Add right child to stack 
+            if (current.right) stack.push(current.right);
+            // Handle data
+            results.unshift(current.data);
+        }
+        // When the loop is done, return results. 
+        return results;
     }
     
 
