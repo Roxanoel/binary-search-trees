@@ -52,13 +52,20 @@ describe('Inorder, preorder, and postoder traversal', () => {
     test('inorder() returns correct traversal of tree', () => {
         expect(tree.inorder(getTreeRoot())).toStrictEqual([1, 4, 7, 8, 9, 23]);
     });
+    test('preorder() works', () => {
+        expect(tree.preorder(getTreeRoot())).toStrictEqual([8, 4, 1, 7, 23, 9]);
+    });
+    test('postorder() works', () => {
+        expect(tree.postorder(getTreeRoot())).toStrictEqual([1, 7, 4, 9, 23, 8]);
+    });
+});
+
+describe.skip('levelOrder traversal', () => {
+    // Write a mock function to use as callback parameter?
 });
 
 describe.skip('Inserting and deleting nodes', () => {
     
-});
-describe.skip('levelOrder traversal', () => {
-    // Write a mock function to use as callback parameter?
 });
 
 describe.skip('Height & depth', () => {
