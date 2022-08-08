@@ -1,8 +1,12 @@
 const mergeSort = require('./mergeSort');  // Using the mergeSort function I made in previous exercises!
 
 function Tree() {
-    // Getters
+    let treeRoot = null;
 
+    // Getters
+    function getTreeRoot() {
+        return treeRoot;
+    }
     // Factories
     function Node(data, left = null, right = null) {
         return {
@@ -45,10 +49,12 @@ function Tree() {
             buildTreeRecusion(array.slice(0, mid)),
             buildTreeRecusion(array.slice(mid + 1, array.length)));
         // Return root
-        return root;
+        treeRoot = root;
+        return treeRoot;
     }
 
     return {
+        getTreeRoot,
         prepareArray,
         buildTree,
     }
