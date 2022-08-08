@@ -134,6 +134,10 @@ function Tree(array) {
         // When the loop is done, return results. 
         return results;
     }
+
+    function levelOrder(root, callback) {
+        if (!callback) throw new Error('Please provide a callback function for levelOrder');
+    }
     
 
     return {
@@ -144,6 +148,7 @@ function Tree(array) {
         inorder,
         preorder,
         postorder,
+        levelOrder,
     }
 }
 
