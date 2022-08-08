@@ -1,6 +1,7 @@
 const Tree = require('./tree');
 
 let tree;
+
 beforeEach(() => {
     tree = Tree([1, 7, 4, 23, 8, 9, 4]);
 });
@@ -60,8 +61,22 @@ describe('Inorder, preorder, and postoder traversal', () => {
     });
 });
 
-describe.skip('levelOrder traversal', () => {
-    // Write a mock function to use as callback parameter?
+describe('levelOrder traversal', () => {
+    let testArray = [];
+
+    function addToTestArray(item) {
+        testArray.push(item);
+    }
+
+    beforeEach(() => {
+        // Reset the array
+        testArray = [];
+    });
+
+    test('levelOrder array calls callback for each item in order', () => {
+        tree.levelOrder(tree.getTreeRoot, addToTestArray);
+        expect(testArray).toStrictEqual([8, 4, 23, 1, 7, 9]);
+    });
 });
 
 describe.skip('Inserting and deleting nodes', () => {
