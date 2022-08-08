@@ -69,11 +69,39 @@ function Tree(array) {
         return currentNode;
     }
 
+    function inorder(root) {
+        const results = [];
+        if (root === null) return null;
+
+        // Initialize a queue
+        const stack = [];
+        let current = root;
+
+        while (current !== null || stack.length > 0) {
+            // Add root to stack & get things moving
+            if (current!== null ) {
+                stack.push(current);
+                current = current.left;
+                console.log
+            } else {
+                // Handling top element of the stack
+                current = stack.pop();
+                results.push(current.data);
+
+                current = current.right;
+            }
+        }
+
+        return results;
+    }
+    
+
     return {
         getTreeRoot,
         prepareArray,
         buildTree,
         find,
+        inorder,
     }
 }
 
