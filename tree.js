@@ -73,16 +73,15 @@ function Tree(array) {
         const results = [];
         if (root === null) return null;
 
-        // Initialize a queue
+        // Initialize a stack
         const stack = [];
         let current = root;
 
         while (current !== null || stack.length > 0) {
             // Add root to stack & get things moving
-            if (current!== null ) {
+            if (current !== null ) {
                 stack.push(current);
                 current = current.left;
-                console.log
             } else {
                 // Handling top element of the stack
                 current = stack.pop();
@@ -91,8 +90,32 @@ function Tree(array) {
                 current = current.right;
             }
         }
-
         return results;
+    }
+
+    function preorder(root) {
+        const results = [];
+        if (root === null) return null;
+
+        // Initialize a stack
+        const stack = [root];
+
+        while (stack.length > 0) {
+            // Handle top element of the stack
+            const current = stack.pop();
+            // Add its data to results
+            results.push(current.data);
+            // Add right child to stack 
+            if (current.right) stack.push(current.right);
+            // Add left child to stack
+            if (current.left) stack.push(current.left);
+        }
+        // When the loop is done, return results. 
+        return results;
+    }   
+
+    function postorder() {
+
     }
     
 
@@ -102,6 +125,8 @@ function Tree(array) {
         buildTree,
         find,
         inorder,
+        preorder,
+        postorder,
     }
 }
 

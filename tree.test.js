@@ -49,7 +49,7 @@ describe('Finding a node', () => {
 });
 
 describe('Inorder, preorder, and postoder traversal', () => {
-    test.only('inorder() returns correct traversal of tree', () => {
+    test('inorder() returns correct traversal of tree', () => {
         expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([1, 4, 7, 8, 9, 23]);
     });
     test('preorder() works', () => {
