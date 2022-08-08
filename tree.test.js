@@ -19,16 +19,20 @@ describe('Building a tree', () => {
     });
 
     test('buildTree throws error if what is passed in is not an array', () => {
-        expect(() => { tree.prepareArray(1)}).toThrow('Please pass in an array');
+        expect(() => { tree.buildTree(1)}).toThrow('Please pass in an array');
     });
     
     test('buildTree returns level-0 root node', () => {
-        expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).data).toBe(7);
+        expect(tree.buildTree([1, 4, 7]).data).toBe(4);
+        expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).data).toBe(8);
     });
 
-    test('Root node returned by buildTree has correct left and right child nodes', () => {
+    test('Root node returned by buildTree has correct left child node', () => {
         expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).left.data).toBe(4);
-        expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).right.data).toBe(9);
+    });
+
+    test('Root node returned by buildTree has correct right child node', () => {
+        expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).right.data).toBe(23);
     });
 });
 describe.skip('Inserting and deleting nodes', () => {
