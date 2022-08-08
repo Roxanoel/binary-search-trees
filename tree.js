@@ -54,10 +54,26 @@ function Tree(array) {
         return treeRoot;
     }
 
+    function find(value) {
+        // Return null if no search value was provided. 
+        if (!value) return null;
+        // Otherwise, iterate on the nodes until the value is found; start at root.
+        let currentNode = treeRoot;
+        
+        while(currentNode != null) {
+            if (currentNode.data === value) return currentNode;
+            // Change node to examine based on search value
+            currentNode = currentNode.data < value ? currentNode.right : currentNode.left;
+        }
+        // Will return null if whole loop goes through w/o match
+        return currentNode;
+    }
+
     return {
         getTreeRoot,
         prepareArray,
         buildTree,
+        find,
     }
 }
 
