@@ -84,9 +84,14 @@ describe('levelOrder traversal', () => {
 });
 
 describe('Inserting and deleting nodes', () => {
-    tree.insert(5);
-    // Check with an inorder traversal
-    expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([5, 1, 4, 7, 8, 9, 23]);
+    test('Insert inserts node with that value at leaf', () => {
+        tree.insert(5);
+        // Check with an inorder traversal
+        expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([5, 1, 4, 7, 8, 9, 23]);
+    });
+    test('Not passing in a value results in an error', () => {
+        expect(() => tree.insert()).toThrow('Please specify a value to insert');
+    })
 });
 
 describe.skip('Height & depth', () => {
