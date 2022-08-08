@@ -35,7 +35,7 @@ describe('Building a tree', () => {
         expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).right.data).toBe(23);
     });
 });
-describe.skip('Inserting and deleting nodes', () => {
+describe('Inserting and deleting nodes', () => {
 
 });
 describe.skip('levelOrder traversal', () => {

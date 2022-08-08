@@ -38,17 +38,12 @@ function Tree() {
     function buildTreeRecusion(array) {
         // Base case 
         if (array.length === 0) return null;
-        if (array.length === 1) return Node(array[0], null, null);
         // Init
         const mid = Math.floor((array.length) / 2);
-        // Root: data from middle element
-        const root = Node(array[mid]);
-        // Subarrays
-        const leftSubarray = array.slice(0, mid);
-        const rightSubarray = array.slice(mid + 1, array.length);
-        // Recursion w/ right and left subarrays
-        root.left = buildTreeRecusion(leftSubarray);
-        root.right = buildTreeRecusion(rightSubarray);
+        // Root: data from middle element, left & right from l&r sub-arrays
+        const root = Node(array[mid], 
+            buildTreeRecusion(array.slice(0, mid)),
+            buildTreeRecusion(array.slice(mid + 1, array.length)));
         // Return root
         return root;
     }
