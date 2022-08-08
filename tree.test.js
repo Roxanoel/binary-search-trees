@@ -36,7 +36,15 @@ describe('Building a tree', () => {
     });
 });
 describe('Finding a node', () => {
-
+    test('find returns null if no search value was provided', () => {
+        expect(tree.find()).toBe(null);
+    });
+    test('find returns null if the value is not found in the tree', () => {
+        expect(tree.find(50)).toBe(null);
+    });
+    test('find returns the right node', () => {
+        expect(tree.find(4).data).toBe(4);
+    });
 });
 describe('Inserting and deleting nodes', () => {
     
