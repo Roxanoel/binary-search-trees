@@ -65,7 +65,7 @@ describe('levelOrder traversal', () => {
     let testArray = [];
 
     function addToTestArray(item) {
-        testArray.push(item);
+        testArray.push(item.data);
     }
 
     beforeEach(() => {
@@ -78,7 +78,7 @@ describe('levelOrder traversal', () => {
     });
 
     test('levelOrder array calls callback for each item in order', () => {
-        tree.levelOrder(tree.getTreeRoot, addToTestArray);
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray);
         expect(testArray).toStrictEqual([8, 4, 23, 1, 7, 9]);
     });
 });
