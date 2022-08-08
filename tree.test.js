@@ -73,6 +73,10 @@ describe('levelOrder traversal', () => {
         testArray = [];
     });
 
+    test('levelOrder throws an error if no callback is passed', () => {
+        expect(() => {tree.levelOrder(tree.getTreeRoot)}).toThrow('Please provide a callback function for levelOrder');
+    });
+
     test('levelOrder array calls callback for each item in order', () => {
         tree.levelOrder(tree.getTreeRoot, addToTestArray);
         expect(testArray).toStrictEqual([8, 4, 23, 1, 7, 9]);
