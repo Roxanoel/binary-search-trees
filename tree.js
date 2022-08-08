@@ -152,6 +152,12 @@ function Tree(array) {
         }
     }
     
+    function insert(value) {
+        if (value === undefined) throw new Error('Please specify a value to insert');
+        
+        // Initialize node to add
+        const newNode = Node(value);
+    }
 
     return {
         getTreeRoot,
@@ -162,6 +168,7 @@ function Tree(array) {
         preorder,
         postorder,
         levelOrder,
+        insert,
     }
 }
 
