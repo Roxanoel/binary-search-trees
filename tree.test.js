@@ -35,6 +35,7 @@ describe('Building a tree', () => {
         expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).right.data).toBe(23);
     });
 });
+
 describe('Finding a node', () => {
     test('find returns null if no search value was provided', () => {
         expect(tree.find()).toBe(null);
@@ -46,15 +47,20 @@ describe('Finding a node', () => {
         expect(tree.find(4).data).toBe(4);
     });
 });
-describe('Inserting and deleting nodes', () => {
+
+describe('Inorder, preorder, and postoder traversal', () => {
+    test('inorder() returns correct traversal of tree', () => {
+        expect(tree.inorder(getTreeRoot())).toStrictEqual([1, 4, 7, 8, 9, 23]);
+    });
+});
+
+describe.skip('Inserting and deleting nodes', () => {
     
 });
 describe.skip('levelOrder traversal', () => {
     // Write a mock function to use as callback parameter?
 });
-describe.skip('Inorder, preorder, and postoder traversal', () => {
 
-});
 describe.skip('Height & depth', () => {
 
 });
