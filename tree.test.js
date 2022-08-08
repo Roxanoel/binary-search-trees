@@ -2,7 +2,7 @@ const Tree = require('./tree');
 
 let tree;
 beforeEach(() => {
-    tree = Tree();
+    tree = Tree([1, 7, 4, 23, 8, 9, 4]);
 });
 
 describe('Building a tree', () => {
@@ -35,8 +35,11 @@ describe('Building a tree', () => {
         expect(tree.buildTree([1, 7, 4, 23, 8, 9, 4]).right.data).toBe(23);
     });
 });
-describe('Inserting and deleting nodes', () => {
+describe('Finding a node', () => {
 
+});
+describe('Inserting and deleting nodes', () => {
+    
 });
 describe.skip('levelOrder traversal', () => {
     // Write a mock function to use as callback parameter?

@@ -1,7 +1,8 @@
 const mergeSort = require('./mergeSort');  // Using the mergeSort function I made in previous exercises!
 
-function Tree() {
+function Tree(array) {
     let treeRoot = null;
+    if(array) treeRoot = buildTree(array);
 
     // Getters
     function getTreeRoot() {
