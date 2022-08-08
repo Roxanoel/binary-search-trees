@@ -83,8 +83,10 @@ describe('levelOrder traversal', () => {
     });
 });
 
-describe.skip('Inserting and deleting nodes', () => {
-    
+describe('Inserting and deleting nodes', () => {
+    tree.insert(5);
+    // Check with an inorder traversal
+    expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([5, 1, 4, 7, 8, 9, 23]);
 });
 
 describe.skip('Height & depth', () => {
