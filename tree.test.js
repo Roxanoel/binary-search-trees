@@ -142,6 +142,19 @@ describe('Height & depth', () => {
         expect(tree.depth(tree.find(9))).toBe(2);
     });
 });
-describe.skip('Balancing', () => {
+describe('Balancing', () => {
+    test('isBalanced throws an error if the tree is empty', () => {
+        tree = Tree();
+        expect(() => { tree.isBalanced() }).toThrow('Tree is empty');
+    });
+    test('isBalanced returns true for default tree', () => {
+        expect(tree.isBalanced()).toBe(true);
+    });
+    test('isBalanced returns false for unbalanced tree', () => {
+        tree.insert(40);
+        tree.insert(50);
+        tree.insert(60);
+        expect(tree.isBalanced()).toBe(false);
+    });
 
 });
