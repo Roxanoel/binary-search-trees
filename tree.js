@@ -258,6 +258,10 @@ function Tree(array) {
         return count;
     }
 
+    function isBalanced() {
+        if(treeRoot === null) throw new Error('Tree is empty');
+    }
+
     return {
         getTreeRoot,
         prepareArray,
@@ -271,6 +275,7 @@ function Tree(array) {
         deleteNode,
         height,
         depth,
+        isBalanced,
     }
 }
 
