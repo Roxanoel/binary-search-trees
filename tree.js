@@ -69,7 +69,7 @@ function Tree(array) {
         return currentNode;
     }
 
-    function inorder(root) {
+    function inorder(root, callback) {
         const results = [];
         if (root === null) return null;
 
@@ -86,6 +86,8 @@ function Tree(array) {
                 // Handling top element of the stack
                 current = stack.pop();
                 results.push(current.data);
+                // If a callback was provided, call it here.
+                if (callback) callback(current);
 
                 current = current.right;
             }
@@ -184,12 +186,26 @@ function Tree(array) {
             } else if (parent.right.data === value) {
                 parent.right = null;
             }
-            return;
+
+        } else if (nodeToDelete.left !== null && nodeToDelete.right!== null) {
+        // If the node has two children, find inorder successor
+        const inorderArray = inorder(nodeToDelete);
+        const successorData = inorderArray[inorderArray.findIndex((elem) => elem === value) + 1];
+        // delete successor
+        parent = findParent(successorData);
+        if (parent.left.data === successorData) {
+            parent.left = null;
+        } else if (parent.right.data === successorData) {
+            parent.right = null;
         }
+        // copy successor data to node. 
+        nodeToDelete.data = successorData;
         
+        } else {
         // If the node has one child, copy child to node and delete child.
 
-        // If the node has two children, find inorder successor, copy to node, delete successor. 
+        }
+
     }
 
     function findParent(value) {
