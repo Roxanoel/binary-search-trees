@@ -181,7 +181,7 @@ function Tree(array) {
         if (nodeToDelete.left === null && nodeToDelete.right === null) {
             if (parent.left.data === value) {
                 parent.left = null;
-            } else if (parent.right.data === null) {
+            } else if (parent.right.data === value) {
                 parent.right = null;
             }
             return;
