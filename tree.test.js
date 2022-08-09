@@ -156,5 +156,16 @@ describe('Balancing', () => {
         tree.insert(60);
         expect(tree.isBalanced()).toBe(false);
     });
-
+    test('rebalance throws error if tree is empty', () => {
+        tree = Tree();
+        expect(() => tree.rebalance()).toThrow('Tree is empty');
+    });
+    test('rebalance balances unbalanced tree', () => {
+        tree.insert(40);
+        tree.insert(50);
+        tree.insert(60);
+        expect(tree.isBalanced()).toBe(false);
+        tree.rebalance();
+        expect(tree.isBalanced()).toBe(true);
+    });
 });
