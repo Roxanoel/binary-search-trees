@@ -1,9 +1,17 @@
 const Tree = require('./tree');
 
 let tree;
+let testArray = [];
+
+function addToTestArray(item) {
+    testArray.push(item.data);
+}
 
 beforeEach(() => {
+    // Generate default tree
     tree = Tree([1, 7, 4, 23, 8, 9, 4]);
+    // Reset the test array
+    testArray = [];
 });
 
 describe('Building a tree', () => {
@@ -62,17 +70,7 @@ describe('Inorder, preorder, and postoder traversal', () => {
 });
 
 describe('levelOrder traversal', () => {
-    let testArray = [];
-
-    function addToTestArray(item) {
-        testArray.push(item.data);
-    }
-
-    beforeEach(() => {
-        // Reset the array
-        testArray = [];
-    });
-
+    
     test('levelOrder throws an error if no callback is passed', () => {
         expect(() => {tree.levelOrder(tree.getTreeRoot)}).toThrow('Please provide a callback function for levelOrder');
     });
@@ -88,6 +86,9 @@ describe('Inserting and deleting nodes', () => {
         tree.insert(5);
         // Check with an inorder traversal
         expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([5, 1, 4, 7, 8, 9, 23]);
+        // Check with level order traversal 
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray);
+        expect(testArray).toStrictEqual([8, 4, 23, 1, 7, 9, 5]);
     });
     test('Insert: Not passing in a value results in an error', () => {
         expect(() => tree.insert()).toThrow('Please specify a value to insert');
@@ -95,20 +96,23 @@ describe('Inserting and deleting nodes', () => {
     test('Delete: Not passing in a value results in an error', () => {
         expect(() => tree.deleteNode()).toThrow('Please specify a value to delete');
     });
-    test('Deleting a node which is a leaf of the tree', () => {
+    test.only('Deleting a node which is a leaf of the tree', () => {
         tree.deleteNode(1);
         // Check with level order traversal
-        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 23, 7, 9]);
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray)
+        expect(testArray).toStrictEqual([8, 4, 23, 7, 9]);
     });
     test('Deleting a node which has one child', () => {
         tree.deleteNode(23);
         // Check with level order traversal
-        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 9, 1, 7]);
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray);
+        expect(testArray).toStrictEqual([8, 4, 9, 1, 7]);
     });
     test('Deleting a node which has two children', () => {
         tree.deleteNode(4);
         // Check with level order traversal
-        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 7, 23, 1, 9]);
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray);
+        expect(testArray).toStrictEqual([8, 7, 23, 1, 9]);
     });
     test('Deleting the root node', () => {
         tree.deleteNode(8);

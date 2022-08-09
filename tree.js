@@ -173,6 +173,38 @@ function Tree(array) {
     function deleteNode(value) {
         if (value === undefined) throw new Error('Please specify a value to delete');
 
+        // Find node which has the specified value & its parent. 
+        let parent = findParent(value);
+        let nodeToDelete = find(value);
+        
+        // If the node is childless, just delete it (set to null)
+        if (nodeToDelete.left === null && nodeToDelete.right === null) {
+            if (parent.left.data === value) {
+                parent.left = null;
+            } else if (parent.right.data === null) {
+                parent.right = null;
+            }
+            return;
+        }
+        
+        // If the node has one child, copy child to node and delete child.
+
+        // If the node has two children, find inorder successor, copy to node, delete successor. 
+    }
+
+    function findParent(value) {
+        let currentNode = treeRoot;
+        
+        while(currentNode != null) {
+            if (currentNode.left.data === value || 
+                currentNode.right.data === value) {
+                    return currentNode;
+            }
+            // Advance in the tree based on value
+            currentNode = currentNode.data < value ? currentNode.right : currentNode.left;
+        }
+
+        return null;
     }
 
     return {
