@@ -114,16 +114,17 @@ describe('Inserting and deleting nodes', () => {
         tree.levelOrder(tree.getTreeRoot(), addToTestArray);
         expect(testArray).toStrictEqual([8, 4, 9, 1, 7]);
     });
-    test.only('Deleting a node which has two children', () => {
+    test('Deleting a node which has two children', () => {
         tree.deleteNode(4);
         // Check with level order traversal
         tree.levelOrder(tree.getTreeRoot(), addToTestArray);
         expect(testArray).toStrictEqual([8, 7, 23, 1, 9]);
     });
-    test('Deleting the root node', () => {
+    test.only('Deleting the root node', () => {
         tree.deleteNode(8);
         // Check with level order traversal
-        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([9, 4, 23, 1, 7]);
+        tree.levelOrder(tree.getTreeRoot(), addToTestArray);
+        expect(testArray).toStrictEqual([9, 4, 23, 1, 7]);
     });
 });
 

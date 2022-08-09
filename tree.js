@@ -176,11 +176,12 @@ function Tree(array) {
         if (value === undefined) throw new Error('Please specify a value to delete');
 
         // Find node which has the specified value & its parent. 
-        let parent = findParent(value);
+        let parent;
         let nodeToDelete = find(value);
         
         // If the node is childless, just delete it (set to null)
         if (nodeToDelete.left === null && nodeToDelete.right === null) {
+            parent = findParent(value);
             if (parent.left.data === value) {
                 parent.left = null;
             } else if (parent.right.data === value) {
