@@ -11,6 +11,22 @@ function getRandomWithinRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function printAll(tree) {
+    // Level order
+    const levelOrder = [];
+    tree.levelOrder(tree.getTreeRoot(), (node) => levelOrder.push(node.data));
+    console.log(`Level order traversal: ${levelOrder}`);
+
+    // Preorder traversal
+    console.log(`Preorder traversal: ${tree.preorder(tree.getTreeRoot())}`);
+
+    // Inorder traversal
+    console.log(`Inorder traversal: ${tree.inorder(tree.getTreeRoot())}`);
+
+    // Postorder traversal
+    console.log(`Postorder traversal: ${tree.postorder(tree.getTreeRoot())}`);
+}
+
 function Driver() {
     // Determine a random array length
     const arrayLength = getRandomWithinRange(minLength, maxLength);
@@ -31,18 +47,24 @@ function Driver() {
     // Confirm that the tree is balanced and print result 
     console.log(`Tree is balanced: ${tree.isBalanced() ? 'yes' : 'no'}`);
 
-    // Level order
-    const levelOrder = [];
-    tree.levelOrder(tree.getTreeRoot(), (node) => levelOrder.push(node.data));
-    console.log(`Level order traversal: ${levelOrder}`);
+    // Print results for all traversals
+    printAll(tree);
 
-    // Preorder traversal
-    console.log(`Preorder traversal: ${tree.preorder(tree.getTreeRoot())}`);
+    // Unbalance tree by adding nodes > 100
+    tree.insert(150);
+    tree.insert(230);
+    tree.insert(134);
 
-    // Inorder traversal
-    console.log(`Inorder traversal: ${tree.inorder(tree.getTreeRoot())}`);
+    // Confirm that tree is unbalanced
+    console.log(`Numbers added. ${tree.isBalanced() ? 'Tree is still balanced.' : 'Tree is indeed unbalanced.'}`);
 
-    // Postorder traversal
-    console.log(`Postorder traversal: ${tree.postorder(tree.getTreeRoot())}`);
+    // Balance the tree
+    tree.rebalance(); 
+
+    // Confirm that the tree is rebalanced
+    console.log(`rebalance was called. ${tree.isBalanced() ? 'Tree is balanced again.' : 'Tree is still unbalanced!' }`);
+
+    // Print all elements again
+    printAll(tree);
 }
 module.exports = Driver;
