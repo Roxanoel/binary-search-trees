@@ -30,5 +30,19 @@ function Driver() {
 
     // Confirm that the tree is balanced and print result 
     console.log(`Tree is balanced: ${tree.isBalanced() ? 'yes' : 'no'}`);
+
+    // Level order
+    const levelOrder = [];
+    tree.levelOrder(tree.getTreeRoot(), (node) => levelOrder.push(node.data));
+    console.log(`Level order traversal: ${levelOrder}`);
+
+    // Preorder traversal
+    console.log(`Preorder traversal: ${tree.preorder(tree.getTreeRoot())}`);
+
+    // Inorder traversal
+    console.log(`Inorder traversal: ${tree.inorder(tree.getTreeRoot())}`);
+
+    // Postorder traversal
+    console.log(`Postorder traversal: ${tree.postorder(tree.getTreeRoot())}`);
 }
 module.exports = Driver;
