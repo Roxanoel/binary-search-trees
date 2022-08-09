@@ -139,7 +139,7 @@ describe('Height & depth', () => {
         expect(tree.depth(tree.getTreeRoot())).toBe(0)
     });
     test('Depth is correct for node within tree', () => {
-        expect(tree.depth(tree.find(23))).toBe(1);
+        expect(tree.depth(tree.find(9))).toBe(2);
     });
 });
 describe.skip('Balancing', () => {

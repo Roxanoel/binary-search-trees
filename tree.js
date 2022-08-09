@@ -238,12 +238,24 @@ function Tree(array) {
         return Math.max(left, right);  
     }
 
-    function heightRecursion(node) {
-
-    }
-
     function depth(node) {
+        if (node === null || node === treeRoot) return 0;
 
+        let count = 0;
+        let current = treeRoot;
+
+        while (current !== node) {
+            count ++;
+            
+            if(current.data > node.data) {
+                current = current.left;
+            } 
+            if (current.data < node.data) {
+                current = current.right;
+            }
+        }
+        // Loop stops when node was reached; return count.
+        return count;
     }
 
     return {
