@@ -260,6 +260,24 @@ function Tree(array) {
 
     function isBalanced() {
         if(treeRoot === null) throw new Error('Tree is empty');
+
+        // Init
+        const queue = [treeRoot];
+
+        while (queue.length > 0) {
+            // Cache first item in queue
+            const current = queue.shift();
+            // process first item in the queue : return false is difference is too great
+            if (Math.abs(height(current.left) - height(current.right)) > 1) {
+                return false;
+            }
+            // If the current node has children, add them to queue.
+            if (current.left !== null) queue.push(current.left);
+            if (current.right !== null) queue.push(current.right);
+        }
+        // If the whole loop goes through without issues, return true
+        return true;
+
     }
 
     return {
