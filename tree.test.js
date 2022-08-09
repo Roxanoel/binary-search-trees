@@ -93,25 +93,25 @@ describe('Inserting and deleting nodes', () => {
         expect(() => tree.insert()).toThrow('Please specify a value to insert');
     });
     test('Delete: Not passing in a value results in an error', () => {
-        expect(() => tree.delete()).toThrow('Please specify a value to delete');
+        expect(() => tree.deleteNode()).toThrow('Please specify a value to delete');
     });
     test('Deleting a node which is a leaf of the tree', () => {
-        tree.delete(1);
+        tree.deleteNode(1);
         // Check with level order traversal
         expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 23, 7, 9]);
     });
     test('Deleting a node which has one child', () => {
-        tree.delete(23);
+        tree.deleteNode(23);
         // Check with level order traversal
         expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 9, 1, 7]);
     });
     test('Deleting a node which has two children', () => {
-        tree.delete(4);
+        tree.deleteNode(4);
         // Check with level order traversal
         expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 7, 23, 1, 9]);
     });
     test('Deleting the root node', () => {
-        tree.delete(8);
+        tree.deleteNode(8);
         // Check with level order traversal
         expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([9, 4, 23, 1, 7]);
     });

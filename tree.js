@@ -170,6 +170,11 @@ function Tree(array) {
         current.left = Node(value);
     }
 
+    function deleteNode(value) {
+        if (value === undefined) throw new Error('Please specify a value to delete');
+
+    }
+
     return {
         getTreeRoot,
         prepareArray,
@@ -180,6 +185,7 @@ function Tree(array) {
         postorder,
         levelOrder,
         insert,
+        deleteNode,
     }
 }
 
