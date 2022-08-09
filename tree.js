@@ -204,7 +204,13 @@ function Tree(array) {
         
         } else {
         // If the node has one child, copy child to node and delete child.
-
+            if (nodeToDelete.left !== null) {
+                nodeToDelete.data = nodeToDelete.left.data;
+                nodeToDelete.left = null;
+            } else if (nodeToDelete.right !== null) {
+                nodeToDelete.data = nodeToDelete.right.data;
+                nodeToDelete.right = null;
+            }
         }
 
     }

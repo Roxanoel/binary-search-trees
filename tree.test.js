@@ -120,7 +120,7 @@ describe('Inserting and deleting nodes', () => {
         tree.levelOrder(tree.getTreeRoot(), addToTestArray);
         expect(testArray).toStrictEqual([8, 7, 23, 1, 9]);
     });
-    test.only('Deleting the root node', () => {
+    test('Deleting the root node', () => {
         tree.deleteNode(8);
         // Check with level order traversal
         tree.levelOrder(tree.getTreeRoot(), addToTestArray);
