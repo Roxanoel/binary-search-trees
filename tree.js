@@ -95,7 +95,7 @@ function Tree(array) {
         return results;
     }
 
-    function preorder(root) {
+    function preorder(root, callback) {
         const results = [];
         if (root === null) return null;
 
@@ -105,6 +105,7 @@ function Tree(array) {
         while (stack.length > 0) {
             // Handle top element of the stack
             const current = stack.pop();
+            if (callback) callback(current);
             // Add its data to results
             results.push(current.data);
             // Add right child to stack 
@@ -116,7 +117,7 @@ function Tree(array) {
         return results;
     }   
 
-    function postorder(root) {
+    function postorder(root, callback) {
         const results = [];
         if (root === null) return null;
 
@@ -126,6 +127,7 @@ function Tree(array) {
         while (stack.length > 0) {
             // Handle top element of the stack
             const current = stack.pop();
+            if (callback) callback(current);
             // Add left child to stack
             if (current.left) stack.push(current.left);
             // Add right child to stack 
