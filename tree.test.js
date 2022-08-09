@@ -128,7 +128,7 @@ describe('Inserting and deleting nodes', () => {
     });
 });
 
-describe.skip('Height & depth', () => {
+describe('Height & depth', () => {
     test('Height is correct for root node', () => {
         expect(tree.height(tree.getTreeRoot())).toBe(2);
     });

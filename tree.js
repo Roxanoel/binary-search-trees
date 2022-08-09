@@ -212,7 +212,6 @@ function Tree(array) {
                 nodeToDelete.right = null;
             }
         }
-
     }
 
     function findParent(value) {
@@ -230,6 +229,23 @@ function Tree(array) {
         return null;
     }
 
+    function height(node) {
+        if (node === null) return -1;  // Because we are counting edges and not nodes
+        
+        const left = height(node.left) + 1;
+        const right = height(node.right) +1;
+
+        return Math.max(left, right);  
+    }
+
+    function heightRecursion(node) {
+
+    }
+
+    function depth(node) {
+
+    }
+
     return {
         getTreeRoot,
         prepareArray,
@@ -241,6 +257,8 @@ function Tree(array) {
         levelOrder,
         insert,
         deleteNode,
+        height,
+        depth,
     }
 }
 
