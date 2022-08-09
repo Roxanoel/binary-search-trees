@@ -154,9 +154,20 @@ function Tree(array) {
     
     function insert(value) {
         if (value === undefined) throw new Error('Please specify a value to insert');
+
+        // To use in while loop
+        let current = treeRoot;
+
+        while (current.left !== null || current.right !== null) {
+            if (current.left !== null) {
+                current = current.left;
+            } else if (current.right !== null) {
+                current = current.right;
+            }
+        }
         
-        // Initialize node to add
-        const newNode = Node(value);
+        // Node to add
+        current.left = Node(value);
     }
 
     return {
