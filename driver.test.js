@@ -1,3 +1,5 @@
 const Driver = require('./driver');
 
-Driver();
+test('Wrapper for running driver', () => {
+    Driver();
+});
