@@ -89,9 +89,32 @@ describe('Inserting and deleting nodes', () => {
         // Check with an inorder traversal
         expect(tree.inorder(tree.getTreeRoot())).toStrictEqual([5, 1, 4, 7, 8, 9, 23]);
     });
-    test('Not passing in a value results in an error', () => {
+    test('Insert: Not passing in a value results in an error', () => {
         expect(() => tree.insert()).toThrow('Please specify a value to insert');
-    })
+    });
+    test('Delete: Not passing in a value results in an error', () => {
+        expect(() => tree.delete()).toThrow('Please specify a value to delete');
+    });
+    test('Deleting a node which is a leaf of the tree', () => {
+        tree.delete(1);
+        // Check with level order traversal
+        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 23, 7, 9]);
+    });
+    test('Deleting a node which has one child', () => {
+        tree.delete(23);
+        // Check with level order traversal
+        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 4, 9, 1, 7]);
+    });
+    test('Deleting a node which has two children', () => {
+        tree.delete(4);
+        // Check with level order traversal
+        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([8, 7, 23, 1, 9]);
+    });
+    test('Deleting the root node', () => {
+        tree.delete(8);
+        // Check with level order traversal
+        expect(tree.levelOrder(tree.getTreeRoot(), addToTestArray)).toStrictEqual([9, 4, 23, 1, 7]);
+    });
 });
 
 describe.skip('Height & depth', () => {
