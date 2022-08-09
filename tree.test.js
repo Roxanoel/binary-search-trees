@@ -129,7 +129,18 @@ describe('Inserting and deleting nodes', () => {
 });
 
 describe.skip('Height & depth', () => {
-
+    test('Height is correct for root node', () => {
+        expect(tree.height(tree.getTreeRoot())).toBe(2);
+    });
+    test('Height is correct for node within tree', () => {
+        expect(tree.height(tree.find(23))).toBe(1);
+    });
+    test('Depth is correct for root node', () => {
+        expect(tree.depth(tree.getTreeRoot())).toBe(0)
+    });
+    test('Depth is correct for node within tree', () => {
+        expect(tree.depth(tree.find(23))).toBe(1);
+    });
 });
 describe.skip('Balancing', () => {
 
