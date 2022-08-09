@@ -1,6 +1,9 @@
 # binary-search-trees
 Binary search tree exercises for The Odin Project.
 
+# Testing
+I have included my test files with these exercises. All tests were passed prior to this last commit. Tests can be used by installing jest. Note that the test file for the driver is simply a wrapper to ensure the program could easily be run from Node.  
+
 # Instructions
 Found at https://www.theodinproject.com/lessons/javascript-binary-search-trees
 
