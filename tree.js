@@ -277,7 +277,16 @@ function Tree(array) {
         }
         // If the whole loop goes through without issues, return true
         return true;
+    }
 
+    function rebalance() {
+        if (isBalanced()) return;  // Avoids uselessly running code if tree is already balanced. 
+
+        // Get all node data values
+        const dataArray = inorder(treeRoot);
+
+        // Rebuild tree
+        treeRoot = buildTree(dataArray);
     }
 
     return {
@@ -294,6 +303,7 @@ function Tree(array) {
         height,
         depth,
         isBalanced,
+        rebalance,
     }
 }
 
